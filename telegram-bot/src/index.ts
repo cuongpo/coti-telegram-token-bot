@@ -6,17 +6,14 @@ import { deployToken, mintToken } from './services/token';
 import * as path from 'path';
 import * as fs from 'fs';
 
-// Load environment variables from both the telegram-bot directory and parent directory
-const envPaths = [
-  path.resolve(process.cwd(), '.env'),
-  path.resolve(process.cwd(), '..', '.env')
-];
+// Load environment variables from the root directory only
+const envPath = path.resolve(process.cwd(), '..', '.env');
 
-for (const envPath of envPaths) {
-  if (fs.existsSync(envPath)) {
-    dotenv.config({ path: envPath });
-    logger.info(`Loaded environment variables from ${envPath}`);
-  }
+if (fs.existsSync(envPath)) {
+  dotenv.config({ path: envPath });
+  logger.info(`Loaded environment variables from ${envPath}`);
+} else {
+  logger.warn('Root .env file not found. Environment variables must be set in the root .env file.');
 }
 
 // Initialize bot

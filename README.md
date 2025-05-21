@@ -43,11 +43,15 @@ This project provides a complete implementation of a private token on COTI block
    cp env.example .env
    ```
 
-3. Open `.env` in your editor and add your COTI network credentials:
+3. Open `.env` in your editor and add your COTI network credentials and API keys:
    ```
+   # COTI Network Configuration
    PUBLIC_KEYS=your_public_key
    SIGNING_KEYS=your_signing_key
    USER_KEYS=your_user_key
+   
+   # Required for the Telegram bot's AI capabilities
+   OPENAI_API_KEY=your_openai_api_key
    ```
 
 ### Step 1: Deploy Contract
@@ -68,12 +72,13 @@ This project provides a complete implementation of a private token on COTI block
 
 2. The script will output the transaction details and balance after minting.
 
-### Step 3: Configure Telegram Bot Token
+### Step 3: Configure Telegram Bot Token and OpenAI API Key
 
-1. Add your Telegram Bot Token to the root `.env` file:
+1. Make sure you've added both your Telegram Bot Token and OpenAI API Key to the root `.env` file:
    ```
-   # Add this to your root .env file
+   # Required for the Telegram bot to function
    TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+   OPENAI_API_KEY=your_openai_api_key
    ```
 
 2. The contract address is automatically configured in the bot's service file when you deploy the contract in Step 1.
